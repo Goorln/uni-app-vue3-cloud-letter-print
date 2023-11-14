@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { letterPopupList } from '@/static/json/dataJson.js'
 
 // 获取屏幕边界到安全区域距离
 const { safeAreaInsets, windowHeight, windowWidth } = uni.getSystemInfoSync()
@@ -24,19 +25,20 @@ const uploadImg = () => {
     success: (res) => {
       imagePath.value = res.tempFilePaths[0]
       // 裁剪图片
-      wx.getImageInfo({
-        src: imagePath.value,
-        success(re) {},
-      })
-      console.log(res.tempFilePaths[0])
+
+      // console.log(res.tempFilePaths[0])
       imgArr.value.push(res.tempFilePaths[0])
-      console.log(imgArr.value)
+      // console.log(imgArr.value)
     },
   })
 }
 
 const delImg = (id) => {
   imgArr.value.splice(id, 1)
+}
+const popup = ref()
+const openPopup = () => {
+  popup.value.open()
 }
 </script>
 
@@ -88,7 +90,18 @@ const delImg = (id) => {
       </view>
     </view>
 
-    <button class="button" :style="{ bottom: safeAreaInsets?.bottom + 'px' }">下 一 步</button>
+    <button @click="openPopup" class="button" :style="{ bottom: safeAreaInsets?.bottom + 'px' }">
+      下 一 步
+    </button>
+    <uni-popup class="popup" ref="popup" type="center" background-color="#fff">
+      <uni-icons type="closeempty" class="close" size="20"></uni-icons>
+      <view class="popup-content">
+        <view v-for="(it, k) in letterPopupList" :key="k">
+          <view class="popup-text">{{ it.text }}</view>
+          <button class="popup-btn">{{ it.button }}</button>
+        </view>
+      </view>
+    </uni-popup>
   </view>
 </template>
 
@@ -183,17 +196,33 @@ const delImg = (id) => {
     }
   }
   .button {
-    color: #fff;
-    background: #007aff;
     position: absolute;
     left: 50%;
     transform: translate(-50%);
     overflow: hidden;
-    border-radius: 40rpx;
+
     width: 80%;
-    height: 60rpx;
-    line-height: 60rpx;
-    font-size: 28rpx;
+    height: 68rpx;
+    line-height: 68rpx;
+  }
+  .popup {
+    .close {
+      display: flex;
+      justify-content: flex-end;
+      margin: 12rpx;
+      height: 20rpx;
+    }
+    .popup-content {
+      padding: 20rpx 50rpx;
+      .popup-text {
+        font-size: 28rpx;
+      }
+      .popup-btn {
+        height: 56rpx;
+        line-height: 56rpx;
+        margin: 12rpx;
+      }
+    }
   }
 }
 </style>

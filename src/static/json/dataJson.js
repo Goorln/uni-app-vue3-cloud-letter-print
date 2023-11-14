@@ -37,11 +37,22 @@ export const letterPopupList = [
     button: '线上写信',
   },
   {
-    text: '手写信件,方情怀满满',
+    text: '手写信件,情怀满满',
     button: '手写拍照',
   },
   {
     text: '钢笔代写,真情流露',
+    button: '钢笔代写',
+  },
+]
+
+export const postcardPopupList = [
+  {
+    text: '线上写明信片,方便快捷',
+    button: '线上编辑',
+  },
+  {
+    text: '钢笔代写明信片,情怀满满',
     button: '钢笔代写',
   },
 ]

@@ -28,6 +28,12 @@ scroll-view {
 button::after {
   border: none;
 }
+button {
+  color: #fff;
+  background: #007aff;
+  font-size: 28rpx;
+  border-radius: 40rpx;
+}
 
 swiper,
 scroll-view {
