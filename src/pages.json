@@ -1,0 +1,108 @@
+{
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
+      "^Yxy(.*)": "@/components/Yxy$1.vue"
+    }
+  },
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "首页"
+      }
+    },
+    {
+      "path": "pages/shop/shop",
+      "style": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "商城"
+      }
+    },
+    {
+      "path": "pages/coupon/coupon",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "邀请有礼"
+      }
+    },
+    {
+      "path": "pages/my/my",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "我的"
+      }
+    },
+    {
+      "path": "pages/detail/detail",
+      "style": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "商品详情"
+      }
+    },
+    {
+      "path": "pages/common/instructions",
+      "style": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "云信印"
+      }
+    },
+    {
+      "path": "pages/letter/letter",
+      "style": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "云信印"
+      }
+    },
+    {
+      "path": "pages/postcard/index",
+      "style": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "云信印"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#707070",
+    "selectedColor": "#12131D",
+    "backgroundColor": "#fff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tabs/home.png",
+        "selectedIconPath": "static/tabs/home-filling.png"
+      },
+      {
+        "text": "商城",
+        "pagePath": "pages/shop/shop",
+        "iconPath": "static/tabs/shop.png",
+        "selectedIconPath": "static/tabs/shop-filling.png"
+      },
+      {
+        "text": "邀请有礼",
+        "pagePath": "pages/coupon/coupon",
+        "iconPath": "static/tabs/coupon.png",
+        "selectedIconPath": "static/tabs/coupon-filling.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/my/my",
+        "iconPath": "static/tabs/user.png",
+        "selectedIconPath": "static/tabs/user-filling.png"
+      }
+    ]
+  }
+}
