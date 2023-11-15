@@ -26,4 +26,14 @@ const selectedIndex = ref(0)
   </view>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+::v-deep .is-disabled {
+  background-color: transparent !important;
+}
+::v-deep .content-b-r .uni-easyinput {
+  text-align: right !important;
+}
+::v-deep .content .uni-easyinput__content-input {
+  padding-left: 0 !important;
+}
+</style>

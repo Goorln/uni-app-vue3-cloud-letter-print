@@ -39,6 +39,8 @@ const uploadImg = () => {
 const delImg = (id) => {
   imgArr.value.splice(id, 1)
 }
+
+const letterEdit = () => {}
 </script>
 
 <template>
@@ -68,7 +70,7 @@ const delImg = (id) => {
         >
       </view>
     </view>
-    <view class="content" v-if="options.showImg">
+    <view class="images" v-if="options.showImg">
       <view v-if="options[0]?.current"></view>
       <view v-if="options[1]?.current">
         <view class="desc">选择您要添加的照片</view>
@@ -88,10 +90,41 @@ const delImg = (id) => {
         </view>
       </view>
     </view>
+    <view class="content" @tap="letterEdit()">
+      <uni-easyinput
+        class="toName"
+        v-model="toName"
+        :inputBorder="false"
+        :clearable="false"
+        :disabled="true"
+        placeholder="请输入称呼，例如：亲爱的XX"
+      />
+      <uni-easyinput
+        type="textarea"
+        v-model="content"
+        placeholder="请输入内容"
+        :inputBorder="false"
+        :disabled="true"
+      ></uni-easyinput>
+      <view class="content-b">
+        <view>0/9000</view>
+        <view class="content-b-r">
+          <uni-easyinput
+            class="fromName"
+            v-model="fromName"
+            :inputBorder="false"
+            :clearable="false"
+            :disabled="true"
+            placeholder="请输入署名"
+          />
+          <uni-dateformat :date="Date.now()" format="yyyy/MM/dd"></uni-dateformat>
+        </view>
+      </view>
+    </view>
   </view>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .radioItem {
   background: #fff;
   margin-top: 20rpx;
@@ -101,26 +134,7 @@ const delImg = (id) => {
     color: #7e7e7e;
     margin-bottom: 20rpx;
   }
-  .imgItems {
-    display: flex;
-    flex-wrap: wrap;
-    .imgItem {
-      width: 200rpx;
-      height: 300rpx;
-      position: relative;
-      margin-right: 20rpx;
-      margin-bottom: 20rpx;
-      border: 1px solid pink;
-      overflow: hidden;
-      .close {
-        position: absolute;
-        right: 0;
-        top: 0;
-        background-color: rgba(0, 0, 0, 0.4);
-        color: #fff;
-      }
-    }
-  }
+
   .option {
     display: flex;
     flex-wrap: wrap;
@@ -177,12 +191,46 @@ const delImg = (id) => {
       }
     }
   }
-  .content {
+  .images {
+    .imgItems {
+      display: flex;
+      flex-wrap: wrap;
+      .imgItem {
+        width: 200rpx;
+        height: 300rpx;
+        position: relative;
+        margin-right: 20rpx;
+        margin-bottom: 20rpx;
+        border: 1px solid pink;
+        overflow: hidden;
+        .close {
+          position: absolute;
+          right: 0;
+          top: 0;
+          background-color: rgba(0, 0, 0, 0.4);
+          color: #fff;
+        }
+      }
+    }
     .upload {
       width: 200rpx;
     }
     .gray {
       opacity: 0.6;
+    }
+  }
+  .content {
+    border: 1rpx dashed #ccc;
+    padding: 28rpx;
+    font-size: 28rpx;
+    color: #7e7e7e;
+    .content-b {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      .content-b-r {
+        text-align: right;
+      }
     }
   }
 }

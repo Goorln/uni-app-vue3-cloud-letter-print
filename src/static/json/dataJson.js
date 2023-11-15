@@ -29,7 +29,7 @@ export const options1 = [
 ]
 
 export const options = {
-  desc: '请选择需要的信件',
+  desc: '请选择需要的信件字数',
   items: [
     { name: '1500字', price: '0.00', current: true },
     { name: '3000字', price: '2.00', current: false },
