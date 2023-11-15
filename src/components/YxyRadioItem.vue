@@ -1,23 +1,28 @@
 <script setup>
 import { ref } from 'vue'
-import { letterPopupList } from '@/static/json/dataJson.js'
 
-// 获取屏幕边界到安全区域距离
-const { safeAreaInsets, windowHeight, windowWidth } = uni.getSystemInfoSync()
-
-const option = ref([
-  { name: '无照片', price: '￥0.00', current: '' },
-  { name: '上传照片', price: '首张免费', current: true },
-])
+const props = defineProps({
+  options: {
+    type: Object,
+    default: () => {},
+  },
+})
+const emit = defineEmits(['update:options'])
+// console.log(options, props, 'props')
 const onClickItem = (index) => {
-  option.value.forEach((item, i) => {
+  props.options.items.forEach((item, i) => {
     if (index === i) {
       item.current = !item.current
     } else {
       item.current = false
     }
   })
+
+  console.log(index, props.options, 'props.options')
+  emit('update:options', props.options)
 }
+// defineEmits({ 'update:option': tempOptions })
+
 const imgArr = ref([])
 const imagePath = ref()
 const uploadImg = () => {
@@ -36,19 +41,15 @@ const uploadImg = () => {
 const delImg = (id) => {
   imgArr.value.splice(id, 1)
 }
-const popup = ref()
-const openPopup = () => {
-  popup.value.open()
-}
 </script>
 
 <template>
-  <view class="chooseImg">
-    <!-- <YxyRadioItem :option="options" /> -->
-    <text class="desc">请选择需要冲洗照片的数量</text>
+  <view class="radioItem">
+    <view>{{ count }}</view>
+    <text class="desc">{{ options.desc }}</text>
     <view class="option">
       <view
-        v-for="(item, index) in option"
+        v-for="(item, index) in options.items"
         :key="index"
         class="item"
         :class="item.current ? 'selected' : ''"
@@ -57,7 +58,7 @@ const openPopup = () => {
         <view class="item-t">{{ item.name }}</view>
         <view class="price">{{ item.price }}</view>
       </view>
-      <view class="item">
+      <view class="item" v-show="options.showImg">
         <view class="item-t"
           >数量: <text class="red">{{ imgArr.length ? imgArr.length : 0 }}</text> 张</view
         >
@@ -70,9 +71,9 @@ const openPopup = () => {
         >
       </view>
     </view>
-    <view class="content">
-      <view v-if="option[0].current"></view>
-      <view v-if="option[1].current">
+    <view class="content" v-if="options.showImg">
+      <view v-if="options[0]?.current"></view>
+      <view v-if="options[1]?.current">
         <view class="desc">选择您要添加的照片</view>
         <view class="imgItems">
           <view class="imgItem" v-for="(ite, j) in imgArr" :key="j">
@@ -90,26 +91,11 @@ const openPopup = () => {
         </view>
       </view>
     </view>
-
-    <button @click="openPopup" class="button" :style="{ bottom: safeAreaInsets?.bottom + 'px' }">
-      下 一 步
-    </button>
-    <uni-popup class="popup" ref="popup" type="center" background-color="#fff">
-      <uni-icons type="closeempty" class="close" size="20" @tap="popup.close()"></uni-icons>
-      <view class="popup-content">
-        <view v-for="(it, k) in letterPopupList" :key="k">
-          <view class="popup-text">{{ it.text }}</view>
-          <navigator :url="`/pages/write/write?type=${it.type}`" hover-class="none">
-            <button class="popup-btn">{{ it.button }}</button>
-          </navigator>
-        </view>
-      </view>
-    </uni-popup>
   </view>
 </template>
 
 <style lang="scss">
-.chooseImg {
+.radioItem {
   background: #fff;
   margin-top: 20rpx;
   padding: 20rpx;
@@ -196,34 +182,6 @@ const openPopup = () => {
     }
     .gray {
       opacity: 0.6;
-    }
-  }
-  .button {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    overflow: hidden;
-
-    width: 80%;
-    height: 68rpx;
-    line-height: 68rpx;
-  }
-  .popup {
-    .close {
-      display: flex;
-      justify-content: flex-end;
-      height: 20rpx;
-    }
-    .popup-content {
-      padding: 20rpx 70rpx;
-      .popup-text {
-        font-size: 28rpx;
-      }
-      .popup-btn {
-        height: 56rpx;
-        line-height: 56rpx;
-        margin: 12rpx;
-      }
     }
   }
 }

@@ -1,7 +1,11 @@
 <script setup>
 import { ref } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
-import { normalLetterInstrcImgs, postcardInstrcImgs } from '@/static/json/dataJson.js'
+import {
+  normalLetterInstrcImgs,
+  postcardInstrcImgs,
+  postcardPopupList,
+} from '@/static/json/dataJson.js'
 
 // 获取屏幕边界到安全区域距离
 const { safeAreaInsets } = uni.getSystemInfoSync()
@@ -13,11 +17,12 @@ onLoad((options) => {
   imgArr.value = options.type == 0 ? normalLetterInstrcImgs : postcardInstrcImgs
 })
 
+const popup = ref()
 const startMake = () => {
   if (type.value == 0) {
     uni.navigateTo({ url: '/pages/letter/letter' })
   } else {
-    uni.navigateTo({ url: '/pages/postcard/index' })
+    popup.value.open()
   }
 }
 </script>
@@ -34,6 +39,15 @@ const startMake = () => {
         </label>
       </view>
     </view>
+    <uni-popup class="popup" ref="popup" type="center" background-color="#fff">
+      <uni-icons type="closeempty" class="close" size="20" @tap="popup.close()"></uni-icons>
+      <view class="popup-content">
+        <view v-for="(it, k) in postcardPopupList" :key="k">
+          <view class="popup-text">{{ it.text }}</view>
+          <button class="popup-btn">{{ it.button }}</button>
+        </view>
+      </view>
+    </uni-popup>
     <!-- 底部占位空盒子 -->
     <view
       :style="{ paddingBottom: safeAreaInsets?.bottom + 80 + 'px' }"
@@ -71,6 +85,25 @@ const startMake = () => {
       background: #007aff;
     }
     /* #endif */
+  }
+}
+.popup {
+  width: 320rpx;
+  .close {
+    display: flex;
+    justify-content: flex-end;
+    height: 20rpx;
+  }
+  .popup-content {
+    padding: 20rpx 70rpx;
+    .popup-text {
+      font-size: 28rpx;
+    }
+    .popup-btn {
+      height: 56rpx;
+      line-height: 56rpx;
+      margin: 12rpx;
+    }
   }
 }
 </style>

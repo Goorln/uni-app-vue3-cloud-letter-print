@@ -1,14 +1,19 @@
 <script setup>
-import { ref } from 'vue'
-import { stepList } from '@/static/json/dataJson.js'
-const active = ref(0)
-const list = ref([])
-list.value = stepList
+const props = defineProps({
+  options: {
+    type: Array,
+    default: () => [],
+  },
+  active: {
+    type: Number,
+    default: 0,
+  },
+})
 </script>
 
 <template>
   <view class="steps">
-    <uni-steps :options="list" :active="active" />
+    <uni-steps :options="options" :active="active" />
   </view>
 </template>
 

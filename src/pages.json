@@ -65,6 +65,13 @@
         "navigationBarTextStyle": "black",
         "navigationBarTitleText": "云信印"
       }
+    },
+    {
+      "path": "pages/write/write",
+      "style": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "云信印"
+      }
     }
   ],
   "globalStyle": {
