@@ -33,9 +33,12 @@ export const options = {
   items: [
     { name: '1500字', price: '0.00', current: true },
     { name: '3000字', price: '2.00', current: false },
+    { name: '4500字', price: '4.00', current: false },
+    { name: '6000字', price: '6.00', current: false },
+    { name: '7500字', price: '8.00', current: false },
+    { name: '9000字', price: '10.00', current: false },
   ],
   showImg: false,
-  count: 1,
 }
 
 export const letterPopupList = [

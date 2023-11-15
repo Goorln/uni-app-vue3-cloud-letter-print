@@ -7,9 +7,11 @@ const props = defineProps({
     default: () => {},
   },
 })
-const emit = defineEmits(['update:options'])
-// console.log(options, props, 'props')
+const emit = defineEmits(['update:selected'])
+const selectedIndex = ref(0)
 const onClickItem = (index) => {
+  selectedIndex.value = index
+  emit('update:selected', index)
   props.options.items.forEach((item, i) => {
     if (index === i) {
       item.current = !item.current
@@ -17,11 +19,7 @@ const onClickItem = (index) => {
       item.current = false
     }
   })
-
-  console.log(index, props.options, 'props.options')
-  emit('update:options', props.options)
 }
-// defineEmits({ 'update:option': tempOptions })
 
 const imgArr = ref([])
 const imagePath = ref()
@@ -45,7 +43,6 @@ const delImg = (id) => {
 
 <template>
   <view class="radioItem">
-    <view>{{ count }}</view>
     <text class="desc">{{ options.desc }}</text>
     <view class="option">
       <view
@@ -56,7 +53,7 @@ const delImg = (id) => {
         @tap="onClickItem(index)"
       >
         <view class="item-t">{{ item.name }}</view>
-        <view class="price">{{ item.price }}</view>
+        <view class="price"><text v-if="!options.showImg">￥</text>{{ item.price }}</view>
       </view>
       <view class="item" v-show="options.showImg">
         <view class="item-t"
@@ -126,13 +123,17 @@ const delImg = (id) => {
   }
   .option {
     display: flex;
+    flex-wrap: wrap;
+    // align-items: center;
+    // justify-content: space-between;
     margin: 20rpx 0;
     .item {
-      width: 140rpx;
+      width: 200rpx;
       border: 1rpx solid #ccc;
       text-align: center;
       padding: 15rpx 0;
-      margin-right: 40rpx;
+      margin-right: 30rpx;
+      margin-bottom: 20rpx;
       &:last-child {
         border: 0;
         width: 200rpx;
