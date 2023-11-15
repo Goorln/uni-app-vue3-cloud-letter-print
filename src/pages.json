@@ -53,6 +53,13 @@
       }
     },
     {
+      "path": "pages/common/letterEdit",
+      "style": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "信件编辑"
+      }
+    },
+    {
       "path": "pages/letter/letter",
       "style": {
         "navigationBarTextStyle": "black",

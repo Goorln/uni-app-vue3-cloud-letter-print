@@ -35,17 +35,22 @@ const uploadImg = () => {
     },
   })
 }
-
+// 删除照片
 const delImg = (id) => {
   imgArr.value.splice(id, 1)
 }
-
-const letterEdit = () => {}
+// 信件编辑
+const formData = ref({
+  toName: '', // 称呼
+  content: '', // 信件内容
+  fromName: '', // 署名
+})
 </script>
 
 <template>
   <view class="radioItem">
     <text class="desc">{{ options.desc }}</text>
+    <!-- 选项 -->
     <view class="option">
       <view
         v-for="(item, index) in options.items"
@@ -70,6 +75,7 @@ const letterEdit = () => {}
         >
       </view>
     </view>
+    <!-- 选择照片 -->
     <view class="images" v-if="options.showImg">
       <view v-if="options[0]?.current"></view>
       <view v-if="options[1]?.current">
@@ -90,36 +96,39 @@ const letterEdit = () => {}
         </view>
       </view>
     </view>
-    <view class="content" @tap="letterEdit()">
-      <uni-easyinput
-        class="toName"
-        v-model="toName"
-        :inputBorder="false"
-        :clearable="false"
-        :disabled="true"
-        placeholder="请输入称呼，例如：亲爱的XX"
-      />
-      <uni-easyinput
-        type="textarea"
-        v-model="content"
-        placeholder="请输入内容"
-        :inputBorder="false"
-        :disabled="true"
-      ></uni-easyinput>
-      <view class="content-b">
-        <view>0/9000</view>
-        <view class="content-b-r">
-          <uni-easyinput
-            class="fromName"
-            v-model="fromName"
-            :inputBorder="false"
-            :clearable="false"
-            :disabled="true"
-            placeholder="请输入署名"
-          />
-          <uni-dateformat :date="Date.now()" format="yyyy/MM/dd"></uni-dateformat>
+    <!-- 信件内容 -->
+    <view class="content">
+      <navigator url="/pages/common/letterEdit" open-type="navigate" hover-class="navigator-hover">
+        <uni-easyinput
+          class="toName"
+          v-model="formData.toName"
+          :inputBorder="false"
+          :clearable="false"
+          :disabled="true"
+          placeholder="请输入称呼，例如：亲爱的XX"
+        />
+        <uni-easyinput
+          type="textarea"
+          v-model="formData.content"
+          placeholder="请输入内容"
+          :inputBorder="false"
+          :disabled="true"
+        ></uni-easyinput>
+        <view class="content-b">
+          <view>0/9000</view>
+          <view class="content-b-r">
+            <uni-easyinput
+              class="fromName"
+              v-model="formData.fromName"
+              :inputBorder="false"
+              :clearable="false"
+              :disabled="true"
+              placeholder="请输入署名"
+            />
+            <uni-dateformat :date="Date.now()" format="yyyy/MM/dd"></uni-dateformat>
+          </view>
         </view>
-      </view>
+      </navigator>
     </view>
   </view>
 </template>
