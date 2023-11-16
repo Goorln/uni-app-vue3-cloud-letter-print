@@ -1,19 +1,27 @@
 <script setup>
 import { ref } from 'vue'
+import { onLoad } from '@dcloudio/uni-app'
+import { useLetterStore } from '@/stores'
 // 获取屏幕边界到安全区域距离
 const { safeAreaInsets } = uni.getSystemInfoSync()
-console.log(uni.getSystemInfoSync(), safeAreaInsets, 'safeAreaInsets')
+
 const formData = ref({
   toName: '', // 称呼
   content: '', // 信件内容
   fromName: '', // 署名
-  letterCount: 0,
+  letterCount: 0, // 字数
 })
 // 字数
 const changeContent = (ev) => {
-  console.log(ev, ev.length, 'e')
   formData.value.letterCount = ev.length
 }
+// 判断letterStore是否有内容
+const letterStore = useLetterStore()
+onLoad(() => {
+  if (letterStore.letterInfo.letterCount > 0) {
+    formData.value = letterStore.letterInfo
+  }
+})
 // 确认
 const confirm = () => {
   //判断字段值不为空
@@ -24,7 +32,11 @@ const confirm = () => {
   } else if (formData.value.fromName === '') {
     return uni.showToast({ icon: 'none', title: '请输入署名~' })
   } else {
-    // 返回上一页
+    // 保存信件信息
+    letterStore.setLetterInfo(formData.value)
+    // 回显信件信息
+    // uni.navigateTo({ url: '/pages/write/write?type=3' })
+    uni.navigateBack()
   }
 }
 </script>

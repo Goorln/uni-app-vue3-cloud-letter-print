@@ -40,12 +40,12 @@ export const options = {
   ],
   showImg: false,
 }
-
+// type,0 => 线上写信, 1 => 手写拍照, 2 => 钢笔代写，3=> 是否回显
 export const letterPopupList = [
   {
     text: '线上写信,方便快捷',
     button: '线上写信',
-    type: 0,
+    type: '0',
   },
   {
     text: '手写信件,情怀满满',

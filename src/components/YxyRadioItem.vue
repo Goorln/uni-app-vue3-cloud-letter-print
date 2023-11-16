@@ -1,5 +1,7 @@
 <script setup>
 import { ref } from 'vue'
+import { onLoad } from '@dcloudio/uni-app'
+import { useLetterStore } from '@/stores'
 
 const props = defineProps({
   options: {
@@ -7,6 +9,7 @@ const props = defineProps({
     default: () => {},
   },
 })
+
 const emit = defineEmits(['update:selected'])
 const selectedIndex = ref(0)
 const onClickItem = (index) => {
@@ -44,7 +47,17 @@ const formData = ref({
   toName: '', // 称呼
   content: '', // 信件内容
   fromName: '', // 署名
+  letterCount: 0,
 })
+// 判断页面是否需要回显信件内容
+// const type = ref('0')
+const letterStore = useLetterStore()
+onLoad(() => {
+  if (letterStore.letterInfo.letterCount > 0) {
+    formData.value = letterStore.letterInfo
+  }
+})
+console.log(letterStore.letterInfo.letterCount, 'letterCount')
 </script>
 
 <template>
@@ -98,7 +111,7 @@ const formData = ref({
     </view>
     <!-- 信件内容 -->
     <view class="content">
-      <navigator url="/pages/common/letterEdit" open-type="navigate" hover-class="navigator-hover">
+      <navigator url="/pages/common/letterEdit" open-type="navigate" hover-class="none">
         <uni-easyinput
           class="toName"
           v-model="formData.toName"
@@ -115,7 +128,7 @@ const formData = ref({
           :disabled="true"
         ></uni-easyinput>
         <view class="content-b">
-          <view>0/9000</view>
+          <view>{{ formData.letterCount }}/9000</view>
           <view class="content-b-r">
             <uni-easyinput
               class="fromName"
@@ -232,7 +245,7 @@ const formData = ref({
     border: 1rpx dashed #ccc;
     padding: 28rpx;
     font-size: 28rpx;
-    color: #7e7e7e;
+    // color: #7e7e7e;
     .content-b {
       display: flex;
       justify-content: space-between;

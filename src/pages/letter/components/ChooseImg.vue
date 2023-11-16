@@ -99,6 +99,7 @@ const openPopup = () => {
       <view class="popup-content">
         <view v-for="(it, k) in letterPopupList" :key="k">
           <view class="popup-text">{{ it.text }}</view>
+          <!-- type,0 => 线上写信, 1 => 手写拍照, 2 => 钢笔代写，3=> 是否回显 -->
           <navigator :url="`/pages/write/write?type=${it.type}`" hover-class="none">
             <button class="popup-btn">{{ it.button }}</button>
           </navigator>
