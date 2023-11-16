@@ -57,7 +57,6 @@ onLoad(() => {
     formData.value = letterStore.letterInfo
   }
 })
-console.log(letterStore.letterInfo.letterCount, 'letterCount')
 </script>
 
 <template>

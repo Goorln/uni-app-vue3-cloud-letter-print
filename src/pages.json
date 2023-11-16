@@ -48,8 +48,7 @@
     {
       "path": "pages/common/instructions",
       "style": {
-        "navigationBarTextStyle": "black",
-        "navigationBarTitleText": "云信印"
+        "navigationBarTextStyle": "black"
       }
     },
     {
@@ -62,28 +61,31 @@
     {
       "path": "pages/letter/letter",
       "style": {
-        "navigationBarTextStyle": "black",
-        "navigationBarTitleText": "云信印"
+        "navigationBarTextStyle": "black"
       }
     },
     {
       "path": "pages/postcard/index",
       "style": {
-        "navigationBarTextStyle": "black",
-        "navigationBarTitleText": "云信印"
+        "navigationBarTextStyle": "black"
       }
     },
     {
       "path": "pages/write/write",
       "style": {
-        "navigationBarTextStyle": "black",
-        "navigationBarTitleText": "云信印"
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/gallery/gallery",
+      "style": {
+        "navigationBarTextStyle": "black"
       }
     }
   ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "",
+    "navigationBarTitleText": "云信印",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },

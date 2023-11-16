@@ -67,3 +67,37 @@ export const postcardPopupList = [
     button: '钢笔代写',
   },
 ]
+
+// 信纸模板图片地址
+export const galleryLists = [
+  {
+    picture: 'https://z1.ax1x.com/2023/11/16/pittn9H.jpg',
+    title: '可爱信纸',
+    price: 0,
+    current: true,
+  },
+  {
+    picture: 'https://z1.ax1x.com/2023/11/16/pitt3Hf.jpg',
+    title: '可爱信纸',
+    price: 0,
+    current: false,
+  },
+  {
+    picture: 'https://z1.ax1x.com/2023/11/16/pittJUS.jpg',
+    title: '可爱信纸',
+    price: 0,
+    current: false,
+  },
+  {
+    picture: 'https://z1.ax1x.com/2023/11/16/pittNCQ.jpg',
+    title: '可爱信纸',
+    price: 0,
+    current: false,
+  },
+  {
+    picture: 'https://z1.ax1x.com/2023/11/16/pittn9H.jpg',
+    title: '可爱信纸',
+    price: 0,
+    current: false,
+  },
+]

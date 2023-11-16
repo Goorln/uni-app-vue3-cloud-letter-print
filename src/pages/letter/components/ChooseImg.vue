@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { letterPopupList } from '@/static/json/dataJson.js'
 
 // 获取屏幕边界到安全区域距离
-const { safeAreaInsets, windowHeight, windowWidth } = uni.getSystemInfoSync()
+const { safeAreaInsets } = uni.getSystemInfoSync()
 
 const option = ref([
   { name: '无照片', price: '￥0.00', current: '' },

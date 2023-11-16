@@ -30,13 +30,14 @@ const letterStore = useLetterStore()
         }
       "
     />
-    <button
+    <navigator
       v-if="letterStore.letterInfo.letterCount > 0"
-      class="button"
-      :style="{ bottom: safeAreaInsets?.bottom + 'px' }"
+      url="/pages/gallery/gallery"
+      open-type="navigate"
+      hover-class="none"
     >
-      下 一 步
-    </button>
+      <button class="button" :style="{ bottom: safeAreaInsets?.bottom + 'px' }">下 一 步</button>
+    </navigator>
   </view>
 </template>
 
