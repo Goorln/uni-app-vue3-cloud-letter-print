@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { useLetterStore } from '@/stores'
+import { useLetterStore } from '@/stores/modules/letter'
 import { stepList, options } from '@/static/json/dataJson.js'
 
 // 获取屏幕边界到安全区域距离
@@ -9,6 +9,7 @@ const { safeAreaInsets } = uni.getSystemInfoSync()
 const selectedIndex = ref(0)
 
 const letterStore = useLetterStore()
+console.log(letterStore, 'letterStore')
 </script>
 
 <template>
@@ -31,7 +32,7 @@ const letterStore = useLetterStore()
       "
     />
     <navigator
-      v-if="letterStore.letterInfo.letterCount > 0"
+      v-if="letterStore.letterInfo && letterStore.letterInfo.letterCount > 0"
       url="/pages/gallery/gallery"
       open-type="navigate"
       hover-class="none"

@@ -22,7 +22,7 @@ const options = reactive([
 
 <template>
   <view>
-    <image class="banner" src="/static/images/shop/banner.jpg" mode="aspectFill" />
+    <image class="banner" src="https://z1.ax1x.com/2023/11/17/pitRg0S.png" mode="aspectFill" />
     <view class="shop">
       <navigator
         class="item"
@@ -30,7 +30,7 @@ const options = reactive([
         open-type="navigate"
         hover-class="navigator-hover"
       >
-        <image class="image" src="/static/images/home/mailbox.png" mode="scaleToFill" />
+        <image class="image" src="https://z1.ax1x.com/2023/11/17/pitRcm8.png" mode="scaleToFill" />
         <view class="name">士大夫大师傅</view>
         <view class="item-b">
           <view class="price">
@@ -41,7 +41,7 @@ const options = reactive([
         </view>
       </navigator>
       <navigator class="item" url="/pages/" open-type="navigate" hover-class="navigator-hover">
-        <image class="image" src="/static/images/home/mailbox.png" mode="scaleToFill" />
+        <image class="image" src="https://z1.ax1x.com/2023/11/17/pitRcm8.png" mode="scaleToFill" />
         <view class="name">士大夫大师傅</view>
         <view class="item-b">
           <view class="price">
@@ -52,7 +52,7 @@ const options = reactive([
         </view>
       </navigator>
       <navigator class="item" url="/pages/" open-type="navigate" hover-class="navigator-hover">
-        <image class="image" src="/static/images/home/mailbox.png" mode="scaleToFill" />
+        <image class="image" src="https://z1.ax1x.com/2023/11/17/pitRcm8.png" mode="scaleToFill" />
         <view class="name">士大夫大师傅</view>
         <view class="item-b">
           <view class="price">
@@ -63,7 +63,7 @@ const options = reactive([
         </view>
       </navigator>
       <navigator class="item" url="/pages/" open-type="navigate" hover-class="navigator-hover">
-        <image class="image" src="/static/images/home/mailbox.png" mode="scaleToFill" />
+        <image class="image" src="https://z1.ax1x.com/2023/11/17/pitRcm8.png" mode="scaleToFill" />
         <view class="name">士大夫大师傅</view>
         <view class="item-b">
           <view class="price">

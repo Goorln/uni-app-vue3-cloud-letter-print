@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { onLoad } from '@dcloudio/uni-app'
+import { onShow } from '@dcloudio/uni-app'
 import { useLetterStore } from '@/stores'
 
 const props = defineProps({
@@ -52,8 +52,9 @@ const formData = ref({
 // 判断页面是否需要回显信件内容
 // const type = ref('0')
 const letterStore = useLetterStore()
-onLoad(() => {
-  if (letterStore.letterInfo.letterCount > 0) {
+
+onShow(() => {
+  if (letterStore.letterInfo && letterStore.letterInfo.letterCount > 0) {
     formData.value = letterStore.letterInfo
   }
 })

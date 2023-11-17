@@ -84,7 +84,7 @@ const openPopup = () => {
           <image
             class="upload gray"
             @click="uploadImg"
-            src="/static/images/picture.png"
+            src="https://z1.ax1x.com/2023/11/17/pitR2Tg.png"
             mode="widthFix"
           />
         </view>

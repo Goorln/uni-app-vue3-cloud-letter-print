@@ -3,7 +3,7 @@
 <template>
   <view class="detail">
     <view class="preview">
-      <image class="image" src="/static/images/home/mailbox.png" mode="scaleToFill" />
+      <image class="image" src="https://z1.ax1x.com/2023/11/17/pitRcm8.png" mode="scaleToFill" />
     </view>
     <view class="content">
       <view>商品名称:士大夫十分</view>

@@ -7,7 +7,7 @@ const { safeAreaInsets } = uni.getSystemInfoSync()
   <view class="header">
     <view :style="{ paddingTop: safeAreaInsets?.top + 36 + 'px' }"></view>
     <view class="user-info">
-      <img src="@/static/images/my/images.jpg" class="user-avatar" alt="" />
+      <img src="https://z1.ax1x.com/2023/11/17/pitRfYj.jpg" class="user-avatar" alt="" />
       <view>user</view>
       <view>guoq</view>
     </view>

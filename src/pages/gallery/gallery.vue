@@ -17,6 +17,36 @@ const onClickItem = (i) => {
     }
   })
 }
+const msgType = ref('')
+const alertDialog = ref(null)
+const dialogToggle = (type) => {
+  msgType.value = type
+  alertDialog.value.open()
+}
+// 不需要购买商品，直接跳转支付页面
+const dialogClose = () => {}
+// 需要购买商品
+const dialogConfirm = () => {}
+
+//
+const current = ref(0)
+const btnList = ref([
+  { text: '全部', type: 0 },
+  { text: '通用', type: 1 },
+  { text: '极致', type: 2 },
+  { text: '简约', type: 3 },
+  { text: '生日', type: 4 },
+])
+// 处理选项
+const handleChange = (e) => {
+  current.value = e.target.dataset.type
+  if (current.value === 0) {
+    list.value = galleryLists
+  } else {
+    list.value = galleryLists
+    list.value = list.value.filter((item) => item.type === current.value)
+  }
+}
 </script>
 
 <template>
@@ -24,12 +54,16 @@ const onClickItem = (i) => {
     <!-- 步骤条 -->
     <YxySteps :options="stepList" :active="2" />
     <view class="list" :style="{ paddingBottom: safeAreaInsets?.bottom + 40 + 'px' }">
-      <view class="button-group">
-        <button class="button">全部</button>
-        <button class="button">通用</button>
-        <button class="button">极致</button>
-        <button class="button">简约</button>
-        <button class="button">生日</button>
+      <view class="button-group" @tap="handleChange">
+        <button
+          v-for="item in btnList"
+          :key="item.text"
+          class="button"
+          :class="{ selected: current === item.type }"
+          :data-type="item.type"
+        >
+          {{ item.text }}
+        </button>
       </view>
       <view class="items">
         <view class="item" v-for="(item, index) in list" :key="index" @tap="onClickItem(index)">
@@ -48,10 +82,19 @@ const onClickItem = (i) => {
       </view>
     </view>
     <view class="toolbar" :style="{ paddingBottom: safeAreaInsets?.bottom + 'px' }">
-      <navigator url="/pages/gallery/gallery" open-type="navigate" hover-class="none">
-        <button class="button">下 一 步</button>
-      </navigator>
+      <button class="button" @click="dialogToggle('info')">下 一 步</button>
     </view>
+    <uni-popup ref="alertDialog" type="dialog">
+      <uni-popup-dialog
+        :type="msgType"
+        cancelText="不需要"
+        confirmText="购买商品"
+        title="提示"
+        content="您是否需要给收信人邮寄信封，邮票，信纸等物品"
+        @confirm="dialogConfirm"
+        @close="dialogClose"
+      ></uni-popup-dialog>
+    </uni-popup>
   </view>
 </template>
 
@@ -126,6 +169,12 @@ const onClickItem = (i) => {
         height: 60rpx;
         line-height: 60rpx;
         font-size: 26rpx;
+        color: #676767;
+        background: #e8e7e7;
+        &.selected {
+          color: #fff;
+          background: #007aff;
+        }
       }
     }
   }

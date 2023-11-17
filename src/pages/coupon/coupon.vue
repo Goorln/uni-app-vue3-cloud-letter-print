@@ -8,7 +8,9 @@ const { safeAreaInsets } = uni.getSystemInfoSync()
     <view :style="{ paddingTop: safeAreaInsets?.top + 36 + 'px' }"></view>
     <view
       class="section"
-      style="background: url('/static/images/coupon/coupon.png') center center/cover no-repeat"
+      style="
+        background: url('https://z1.ax1x.com/2023/11/17/pitRteO.png') center center/cover no-repeat;
+      "
     ></view>
   </view>
 </template>

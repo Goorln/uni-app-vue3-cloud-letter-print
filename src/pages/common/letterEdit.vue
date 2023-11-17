@@ -18,7 +18,7 @@ const changeContent = (ev) => {
 // 判断letterStore是否有内容
 const letterStore = useLetterStore()
 onLoad(() => {
-  if (letterStore.letterInfo.letterCount > 0) {
+  if (letterStore.letterInfo && letterStore.letterInfo.letterCount > 0) {
     formData.value = letterStore.letterInfo
   }
 })

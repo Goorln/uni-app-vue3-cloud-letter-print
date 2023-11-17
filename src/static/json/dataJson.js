@@ -1,8 +1,8 @@
-export const normalLetterInstrcImgs = ['/static/images/coupon/coupon.png']
+export const normalLetterInstrcImgs = ['https://z1.ax1x.com/2023/11/17/pitRteO.png']
 
 export const postcardInstrcImgs = [
-  '/static/images/home/banner.jpg',
-  '/static/images/home/banner.jpg',
+  'https://z1.ax1x.com/2023/11/17/pitRyOf.jpg',
+  'https://z1.ax1x.com/2023/11/17/pitRyOf.jpg',
 ]
 
 export const stepList = [
@@ -75,29 +75,34 @@ export const galleryLists = [
     title: '可爱信纸',
     price: 0,
     current: true,
+    type: 1,
   },
   {
     picture: 'https://z1.ax1x.com/2023/11/16/pitt3Hf.jpg',
     title: '可爱信纸',
     price: 0,
     current: false,
+    type: 2,
   },
   {
     picture: 'https://z1.ax1x.com/2023/11/16/pittJUS.jpg',
     title: '可爱信纸',
     price: 0,
     current: false,
+    type: 3,
   },
   {
     picture: 'https://z1.ax1x.com/2023/11/16/pittNCQ.jpg',
     title: '可爱信纸',
     price: 0,
     current: false,
+    type: 4,
   },
   {
     picture: 'https://z1.ax1x.com/2023/11/16/pittn9H.jpg',
     title: '可爱信纸',
     price: 0,
     current: false,
+    type: 1,
   },
 ]
