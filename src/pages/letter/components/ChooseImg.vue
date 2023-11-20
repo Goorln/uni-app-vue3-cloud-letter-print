@@ -113,7 +113,7 @@ const openPopup = () => {
 .chooseImg {
   background: #fff;
   margin-top: 20rpx;
-  padding: 20rpx;
+  padding: 20rpx 36rpx;
   .desc {
     font-size: 26rpx;
     color: #7e7e7e;
@@ -126,8 +126,8 @@ const openPopup = () => {
       width: 200rpx;
       height: 300rpx;
       position: relative;
-      margin-right: 20rpx;
-      margin-bottom: 20rpx;
+      margin-right: 28rpx;
+      margin-bottom: 28rpx;
       border: 1px solid pink;
       overflow: hidden;
       .close {

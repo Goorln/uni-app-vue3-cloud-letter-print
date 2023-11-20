@@ -1,16 +1,22 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+import { onLoad } from '@dcloudio/uni-app'
+import { goodsList } from '@/static/json/dataJson.js'
+const goodsDetail = ref({})
+onLoad((options) => {
+  goodsDetail.value = goodsList.filter((item) => item.id == options.id)
+})
+</script>
 
 <template>
   <view class="detail">
     <view class="preview">
-      <image class="image" src="https://z1.ax1x.com/2023/11/17/pitRcm8.png" mode="scaleToFill" />
+      <image class="image" :src="goodsDetail[0]?.picture" mode="scaleToFill" />
     </view>
     <view class="content">
-      <view>商品名称:士大夫十分</view>
-      <view class="desc"
-        >商品描述：十分士大夫十分士大夫胜多负少发射点发生士大夫士大夫士大夫随风倒古典风格的股东会的十分士大夫</view
-      >
-      <view class="price">商品价格</view>
+      <view>【商品名称】:{{ goodsDetail[0]?.name }}</view>
+      <view class="desc">【商品描述】：{{ goodsDetail[0]?.desc }}</view>
+      <view class="price">【商品价格】￥{{ goodsDetail[0]?.price }}</view>
     </view>
   </view>
 </template>

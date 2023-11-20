@@ -16,10 +16,14 @@ onLoad((options) => {
   type.value = options.type
   imgArr.value = options.type == 0 ? normalLetterInstrcImgs : postcardInstrcImgs
 })
+// 是否同意协议
+const checked = ref(false)
 
 const popup = ref()
 const startMake = () => {
-  if (type.value == 0) {
+  if (!checked.value) {
+    return uni.showToast({ icon: 'none', title: '请勾选同意协议~' })
+  } else if (type.value == 0) {
     uni.navigateTo({ url: '/pages/letter/letter' })
   } else {
     popup.value.open()
@@ -33,9 +37,9 @@ const startMake = () => {
     <view class="toolbar" :style="{ paddingBottom: safeAreaInsets?.bottom + 10 + 'px' }">
       <button class="button" @tap="startMake">开始制作</button>
       <view class="agree">
-        <label>
-          <checkbox value="cb" checked="true" color="#fff" style="transform: scale(0.7)" />
-          我已同意《云信印协议》
+        <label for="agree" class="label" @tap="checked = !checked">
+          <text class="circle" :class="{ checked: checked }"></text>
+          <text>我已同意《云信印协议》</text>
         </label>
       </view>
     </view>
@@ -74,16 +78,43 @@ const startMake = () => {
     background: $uni-color-primary;
   }
   .agree {
-    border-radius: 50%;
-    text-align: center;
     font-size: $uni-font-size-base;
+
+    .label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .circle {
+        display: inline-block;
+        width: 22rpx;
+        height: 22rpx;
+        border: 2rpx solid #007aff;
+        border-radius: 50%;
+        margin-right: 8rpx;
+        &.checked {
+          background: #fff;
+          position: relative;
+        }
+        &.checked::before {
+          content: '';
+          width: 16rpx;
+          height: 16rpx;
+          background: #007aff;
+          border-radius: 50%;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
 
     /* 微信中样式 */
     /* #ifdef APP-PLUS ||MP-WEIXIN */
-    checkbox .wx-checkbox-input.wx-checkbox-input-checked {
-      color: #fff;
-      background: #007aff;
-    }
+    // checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+    //   color: #fff;
+    //   background: #007aff;
+    // }
     /* #endif */
   }
 }

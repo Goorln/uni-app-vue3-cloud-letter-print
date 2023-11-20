@@ -40,6 +40,17 @@ export const options = {
   ],
   showImg: false,
 }
+
+export const mailingOptions = {
+  desc: '邮寄方式',
+  items: [
+    { name: '挂号信', price: '10.00元', current: true },
+    { name: '平信', price: '5.00元', current: false },
+    { name: 'EMS', price: '30.00元', current: false },
+    { name: '顺丰', price: '30.00元', current: false },
+  ],
+  showImg: false,
+}
 // type,0 => 线上写信, 1 => 手写拍照, 2 => 钢笔代写，3=> 是否回显
 export const letterPopupList = [
   {
@@ -104,5 +115,111 @@ export const galleryLists = [
     price: 0,
     current: false,
     type: 1,
+  },
+]
+
+export const goodsList = [
+  {
+    id: '1',
+    picture: 'https://z1.ax1x.com/2023/11/17/pitLRKg.png',
+    name: '信封',
+    desc: '每份3封，自带邮票',
+    salesVolume: 9389,
+    price: 9.9,
+  },
+  {
+    id: '2',
+    picture: 'https://z1.ax1x.com/2023/11/17/pitLe3T.jpg',
+    name: '信纸',
+    desc: '每份3封，自带邮票',
+    salesVolume: 9389,
+    price: 9.9,
+  },
+  {
+    id: '3',
+    picture: 'https://z1.ax1x.com/2023/11/17/pitL1ER.jpg',
+    name: '邮票',
+    desc: '每份3封，自带邮票',
+    salesVolume: 9389,
+    price: 9.9,
+  },
+  {
+    id: '4',
+    picture: 'https://z1.ax1x.com/2023/11/17/pitL3U1.jpg',
+    name: '日历',
+    desc: '每份3封，自带邮票',
+    salesVolume: 9389,
+    price: 9.9,
+  },
+  {
+    id: '5',
+    picture: 'https://z1.ax1x.com/2023/11/17/pitLI5q.png',
+    name: '表情贴',
+    desc: '每份3封，自带邮票',
+    salesVolume: 9389,
+    price: 9.9,
+  },
+  {
+    id: '6',
+    picture: 'https://z1.ax1x.com/2023/11/17/pitLXqJ.png',
+    name: '姓名贴纸',
+    desc: '每份3封，自带邮票',
+    salesVolume: 9389,
+    price: 9.9,
+  },
+  {
+    id: '7',
+    picture: 'https://z1.ax1x.com/2023/11/17/pitO9G6.jpg',
+    name: '生日贺卡',
+    desc: '每份3封，自带邮票',
+    salesVolume: 9389,
+    price: 9.9,
+  },
+]
+
+export const feeInfo = [
+  {
+    name: '原订单原价',
+    price: '0',
+  },
+  {
+    name: '原订单实付价',
+    price: '0',
+  },
+  {
+    name: '原订单优惠价',
+    price: '0',
+  },
+  {
+    name: '商品费用',
+    price: '0',
+  },
+  {
+    name: '照片费用',
+    price: '0',
+  },
+  {
+    name: '彩印费用',
+    price: '0',
+  },
+  {
+    name: '信件费用',
+    price: '0',
+  },
+  {
+    name: '模板费用',
+    price: '0',
+  },
+  {
+    name: '邮费（快递）',
+    price: '0',
+  },
+  {
+    name: '总费用',
+    price: '0',
+  },
+  {
+    name: '优惠券',
+    price: '0',
   },
 ]

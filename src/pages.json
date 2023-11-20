@@ -81,6 +81,18 @@
       "style": {
         "navigationBarTextStyle": "black"
       }
+    },
+    {
+      "path": "pages/cart/cart",
+      "style": {
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/order/order",
+      "style": {
+        "navigationBarTextStyle": "black"
+      }
     }
   ],
   "globalStyle": {

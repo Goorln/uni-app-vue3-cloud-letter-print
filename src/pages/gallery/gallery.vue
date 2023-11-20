@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import { stepList, galleryLists } from '@/static/json/dataJson.js'
 
 // 获取屏幕边界到安全区域距离
@@ -26,7 +26,9 @@ const dialogToggle = (type) => {
 // 不需要购买商品，直接跳转支付页面
 const dialogClose = () => {}
 // 需要购买商品
-const dialogConfirm = () => {}
+const dialogConfirm = () => {
+  uni.navigateTo({ url: '/pages/cart/cart' })
+}
 
 //
 const current = ref(0)

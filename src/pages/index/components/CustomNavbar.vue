@@ -7,21 +7,7 @@ const { safeAreaInsets } = uni.getSystemInfoSync()
   <view class="header">
     <view :style="{ paddingTop: safeAreaInsets?.top + 106 + 'rpx' }"></view>
     <view class="titlecontainer">
-      <!-- <view
-        class="title"
-        style="
-          background: url('https://z1.ax1x.com/2023/11/17/pitRteO.png') center center/cover
-            no-repeat;
-        "
-      >
-      </view> -->
-      <!-- <view
-        class="title"
-        style="
-          background: url('https://z1.ax1x.com/2023/11/17/pitRteO.png') center center/cover
-            no-repeat;
-        "
-      ></view> -->
+      <view class="title"> </view>
       <uni-notice-bar
         class="notice"
         color="#2979FF"
@@ -48,6 +34,7 @@ const { safeAreaInsets } = uni.getSystemInfoSync()
     .title {
       height: 360rpx;
       border-radius: 12rpx;
+      background: url('https://z1.ax1x.com/2023/11/17/pitRyOf.jpg') center center/cover no-repeat;
     }
     .notice {
       height: 110rpx;
