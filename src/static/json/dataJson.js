@@ -23,11 +23,12 @@ export const stepList = [
   },
 ]
 
-export const options1 = [
+export const options11 = [
   { name: '无照片', price: '￥0.00', current: false },
   { name: '上传照片', price: '首张免费', current: true },
 ]
 
+// 线上写信
 export const options = {
   desc: '请选择需要的信件字数',
   items: [
@@ -37,6 +38,39 @@ export const options = {
     { name: '6000字', price: '6.00', current: false },
     { name: '7500字', price: '8.00', current: false },
     { name: '9000字', price: '10.00', current: false },
+  ],
+  showImg: false,
+}
+
+// 手写拍照
+export const options1 = {
+  desc: `1. 请将您写好的信，将信纸铺平拍照，我们复印出来；
+         2. 手写的信，请放在光亮的地方拍照，不要有阴影；
+         3. 可使用手机自带的扫描功能，效果更佳`,
+  items: [
+    { name: '1张照片', price: '2.00', current: true },
+    { name: '2张照片', price: '4.00', current: false },
+    { name: '3张照片', price: '6.00', current: false },
+    { name: '4张照片', price: '8.00', current: false },
+    { name: '5张照片', price: '10.00', current: false },
+    { name: '6张照片', price: '12.00', current: false },
+    { name: '7张照片', price: '14.00', current: false },
+    { name: '8张照片', price: '16.00', current: false },
+    { name: '9张照片', price: '18.00', current: false },
+  ],
+  showImg: true,
+}
+
+// 钢笔代写
+export const options2 = {
+  desc: '请选择需要的信件字数',
+  items: [
+    { name: '1000字', price: '19.00', current: true },
+    { name: '2000字', price: '29.00', current: false },
+    { name: '3000字', price: '39.00', current: false },
+    { name: '4000字', price: '49.00', current: false },
+    { name: '5000字', price: '59.00', current: false },
+    { name: '6000字', price: '69.00', current: false },
   ],
   showImg: false,
 }
@@ -51,7 +85,7 @@ export const mailingOptions = {
   ],
   showImg: false,
 }
-// type,0 => 线上写信, 1 => 手写拍照, 2 => 钢笔代写，3=> 是否回显
+// type,0 => 线上写信, 1 => 手写拍照, 2 => 钢笔代写
 export const letterPopupList = [
   {
     text: '线上写信,方便快捷',
@@ -61,10 +95,12 @@ export const letterPopupList = [
   {
     text: '手写信件,情怀满满',
     button: '手写拍照',
+    type: '1',
   },
   {
     text: '钢笔代写,真情流露',
     button: '钢笔代写',
+    type: '2',
   },
 ]
 
@@ -72,10 +108,14 @@ export const postcardPopupList = [
   {
     text: '线上写明信片,方便快捷',
     button: '线上编辑',
+    type: '3',
+    path: '/pages/postcard/index',
   },
   {
     text: '钢笔代写明信片,情怀满满',
     button: '钢笔代写',
+    type: '4',
+    path: '/pages/common/letterEdit',
   },
 ]
 
@@ -145,30 +185,6 @@ export const goodsList = [
   },
   {
     id: '4',
-    picture: 'https://z1.ax1x.com/2023/11/17/pitL3U1.jpg',
-    name: '日历',
-    desc: '每份3封，自带邮票',
-    salesVolume: 9389,
-    price: 9.9,
-  },
-  {
-    id: '5',
-    picture: 'https://z1.ax1x.com/2023/11/17/pitLI5q.png',
-    name: '表情贴',
-    desc: '每份3封，自带邮票',
-    salesVolume: 9389,
-    price: 9.9,
-  },
-  {
-    id: '6',
-    picture: 'https://z1.ax1x.com/2023/11/17/pitLXqJ.png',
-    name: '姓名贴纸',
-    desc: '每份3封，自带邮票',
-    salesVolume: 9389,
-    price: 9.9,
-  },
-  {
-    id: '7',
     picture: 'https://z1.ax1x.com/2023/11/17/pitO9G6.jpg',
     name: '生日贺卡',
     desc: '每份3封，自带邮票',

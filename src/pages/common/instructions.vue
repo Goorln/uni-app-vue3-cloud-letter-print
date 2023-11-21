@@ -48,7 +48,9 @@ const startMake = () => {
       <view class="popup-content">
         <view v-for="(it, k) in postcardPopupList" :key="k">
           <view class="popup-text">{{ it.text }}</view>
-          <button class="popup-btn">{{ it.button }}</button>
+          <navigator :url="`${it.path}?type=${it.type}`" hover-class="none">
+            <button class="popup-btn">{{ it.button }}</button>
+          </navigator>
         </view>
       </view>
     </uni-popup>

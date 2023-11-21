@@ -9,7 +9,6 @@ const props = defineProps({
     default: () => {},
   },
 })
-
 const emit = defineEmits(['update:selected'])
 const selectedIndex = ref(0)
 const onClickItem = (index) => {
@@ -49,8 +48,8 @@ const formData = ref({
   fromName: '', // 署名
   letterCount: 0,
 })
+
 // 判断页面是否需要回显信件内容
-// const type = ref('0')
 const letterStore = useLetterStore()
 
 onShow(() => {
@@ -75,24 +74,15 @@ onShow(() => {
         <view class="item-t">{{ item.name }}</view>
         <view class="price"><text v-if="!options.showImg">￥</text>{{ item.price }}</view>
       </view>
-      <view class="item" v-show="options.showImg">
-        <view class="item-t"
-          >数量: <text class="red">{{ imgArr.length ? imgArr.length : 0 }}</text> 张</view
-        >
-        <view
-          >价格:
-          <text class="red">{{
-            imgArr.length && imgArr.length > 1 ? ((imgArr.length - 1) * 2.5).toFixed(1) : 0
-          }}</text>
-          元</view
-        >
-      </view>
     </view>
     <!-- 选择照片 -->
     <view class="images" v-if="options.showImg">
-      <view v-if="options[0]?.current"></view>
-      <view v-if="options[1]?.current">
-        <view class="desc">选择您要添加的照片</view>
+      <view>
+        <view class="desc"
+          >选择您要添加的照片{{ selectedIndex + 1 }},{{ imgArr.length }},{{
+            selectedIndex + 1 > imgArr.length
+          }}</view
+        >
         <view class="imgItems">
           <view class="imgItem" v-for="(ite, j) in imgArr" :key="j">
             <image class="upload" :src="ite" mode="widthFix" />
@@ -101,16 +91,17 @@ onShow(() => {
             </view>
           </view>
           <image
+            v-show="selectedIndex + 1 > imgArr.length"
             class="upload gray"
             @click="uploadImg"
-            src="/static/images/picture.png"
+            src="https://z1.ax1x.com/2023/11/17/pitR2Tg.png"
             mode="widthFix"
           />
         </view>
       </view>
     </view>
     <!-- 信件内容 -->
-    <view class="content">
+    <view class="content" v-if="!options.showImg">
       <navigator url="/pages/common/letterEdit" open-type="navigate" hover-class="none">
         <uni-easyinput
           class="toName"
@@ -170,11 +161,11 @@ onShow(() => {
       padding: 15rpx 0;
       margin-right: 30rpx;
       margin-bottom: 20rpx;
-      &:last-child {
-        border: 0;
-        width: 200rpx;
-        text-align: left;
-      }
+      // &:last-child {
+      //   border: 0;
+      //   width: 200rpx;
+      //   text-align: left;
+      // }
       .item-t {
         padding-bottom: 8rpx;
       }

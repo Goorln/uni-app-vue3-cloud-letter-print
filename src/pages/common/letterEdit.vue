@@ -1,9 +1,16 @@
 <script setup>
 import { ref } from 'vue'
-import { onLoad } from '@dcloudio/uni-app'
+import { onLoad, onShow } from '@dcloudio/uni-app'
 import { useLetterStore } from '@/stores'
 // 获取屏幕边界到安全区域距离
 const { safeAreaInsets } = uni.getSystemInfoSync()
+
+const props = defineProps({
+  type: {
+    type: String,
+  },
+})
+console.log(props.type, 'type')
 
 const formData = ref({
   toName: '', // 称呼
@@ -17,10 +24,12 @@ const changeContent = (ev) => {
 }
 // 判断letterStore是否有内容
 const letterStore = useLetterStore()
+console.log(letterStore.letterInfo, 'letterStore.letterInfo')
 onLoad(() => {
   if (letterStore.letterInfo && letterStore.letterInfo.letterCount > 0) {
     formData.value = letterStore.letterInfo
   }
+  console.log(formData.value, 'formData.value')
 })
 // 确认
 const confirm = () => {
@@ -75,33 +84,10 @@ const confirm = () => {
       </view>
     </view>
     <view class="button-group" :style="{ bottom: safeAreaInsets.bottom + 28 + 'px' }">
-      <button class="button">日记导入</button>
-      <button class="button">无需寄语</button>
+      <button class="button" v-if="type !== '4'">日记导入</button>
+      <button class="button" v-if="type !== '4'">无需寄语</button>
       <button class="button" @tap="confirm">确定</button>
     </view>
-    <!-- <uni-forms :model="formData">
-      <uni-forms-item label="" name="toName">
-        <uni-easyinput
-          class="toName"
-          v-model="formData.toName"
-          :inputBorder="false"
-          :clearable="false"
-          placeholder="请输入称呼，例如：亲爱的XX"
-        />
-      </uni-forms-item>
-      <uni-forms-item label="" name="content">
-        <uni-easyinput
-          type="textarea"
-          class="textarea"
-          :maxlength="9000"
-          v-model="formData.content"
-          placeholder="请输入内容"
-          :inputBorder="false"
-          @input="changeContent"
-        />
-      </uni-forms-item>
-
-    </uni-forms> -->
   </view>
 </template>
 

@@ -36,7 +36,8 @@ const uploadImg = () => {
 const delImg = (id) => {
   imgArr.value.splice(id, 1)
 }
-const popup = ref()
+
+const popup = ref(null)
 const openPopup = () => {
   popup.value.open()
 }
@@ -99,7 +100,7 @@ const openPopup = () => {
       <view class="popup-content">
         <view v-for="(it, k) in letterPopupList" :key="k">
           <view class="popup-text">{{ it.text }}</view>
-          <!-- type,0 => 线上写信, 1 => 手写拍照, 2 => 钢笔代写，3=> 是否回显 -->
+          <!-- type,0 => 线上写信, 1 => 手写拍照, 2 => 钢笔代写，3 => 明信片线上编辑，4 => 明信片钢笔代写 -->
           <navigator :url="`/pages/write/write?type=${it.type}`" hover-class="none">
             <button class="popup-btn">{{ it.button }}</button>
           </navigator>

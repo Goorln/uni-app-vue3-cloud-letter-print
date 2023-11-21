@@ -71,6 +71,12 @@
       }
     },
     {
+      "path": "pages/postcard/edit",
+      "style": {
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
       "path": "pages/write/write",
       "style": {
         "navigationBarTextStyle": "black"

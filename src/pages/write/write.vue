@@ -1,15 +1,21 @@
 <script setup>
 import { ref } from 'vue'
+import { onLoad } from '@dcloudio/uni-app'
 import { useLetterStore } from '@/stores/modules/letter'
-import { stepList, options } from '@/static/json/dataJson.js'
+import { stepList, options, options1, options2 } from '@/static/json/dataJson.js'
 
 // 获取屏幕边界到安全区域距离
 const { safeAreaInsets } = uni.getSystemInfoSync()
 
 const selectedIndex = ref(0)
+// 当前类型
+const currentOptions = ref([])
+const optionsList = [options, options1, options2]
+onLoad((options) => {
+  currentOptions.value = optionsList[options.type]
+})
 
 const letterStore = useLetterStore()
-console.log(letterStore, 'letterStore')
 </script>
 
 <template>
@@ -17,14 +23,14 @@ console.log(letterStore, 'letterStore')
     <!-- 步骤条 -->
     <YxySteps :options="stepList" :active="1" />
     <YxyRadioItem
-      v-model:options="options"
-      @update:options="options = $event"
+      v-model:options="currentOptions"
+      @update:options="currentOptions = $event"
       v-model:selected="selectedIndex"
       @update:selected="
         (index) => {
-          options.items[index].current = true
-          options.items.forEach((item) => {
-            if (item !== options.items[index]) {
+          currentOptions.items[index].current = true
+          currentOptions.items.forEach((item) => {
+            if (item !== currentOptions.items[index]) {
               item.current = false
             }
           })

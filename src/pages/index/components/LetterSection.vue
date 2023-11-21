@@ -9,7 +9,7 @@
       <navigator class="r-item" url="/pages/common/instructions?type=1" hover-class="none">
         明信片</navigator
       >
-      <view class="r-item">回家倒计时</view>
+      <view class="r-item">见面倒计时</view>
     </view>
   </view>
 </template>
