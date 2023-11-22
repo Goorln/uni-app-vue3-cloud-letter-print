@@ -7,28 +7,28 @@
       <view class="item">
         <view class="item-t">
           <uni-icons type="calendar" color="#79AC78" size="50"></uni-icons>
-          <text>签到有奖</text>
+          <text class="text">签到有奖</text>
         </view>
         <view class="item-c">打卡赚积分兑礼品</view>
       </view>
       <view class="item">
         <view class="item-t">
           <uni-icons type="calendar-filled" color="#79AC78" size="50"></uni-icons>
-          <text>日记存稿</text>
+          <text class="text">日记存稿</text>
         </view>
         <view class="item-c">记录生活中的点滴</view>
       </view>
       <view class="item">
         <view class="item-t">
           <uni-icons type="calendar-filled" color="#79AC78" size="50"></uni-icons>
-          <text>回信查询</text>
+          <text class="text">回信查询</text>
         </view>
         <view class="item-c">山高水远期待和你相见</view>
       </view>
       <view class="item">
         <view class="item-t">
           <uni-icons type="email" color="#79AC78" size="50"></uni-icons>
-          <text>代收信件</text>
+          <text class="text">代收信件</text>
         </view>
         <view class="item-c">免费代收，可拍照发送</view>
       </view>
@@ -60,7 +60,7 @@
       .item-t {
         display: flex;
         align-items: center;
-        text {
+        .text {
           font-weight: 700;
           padding-left: 20rpx;
         }

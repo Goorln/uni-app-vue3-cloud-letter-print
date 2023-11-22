@@ -4,22 +4,22 @@
   <view class="section">
     <navigator class="item left" url="/pages/common/instructions?type=0" hover-class="none">
       <view class="title">
-        <view>正常信件</view>
+        <view class="title-zh">正常信件</view>
         <view>Letter</view>
       </view>
-      <image src="https://z1.ax1x.com/2023/11/22/pidCvqI.png" mode="scaleToFill" />
+      <image class="image" src="https://z1.ax1x.com/2023/11/22/pidCvqI.png" mode="scaleToFill" />
       <button class="button">立即邮寄</button>
     </navigator>
     <view class="item right">
       <navigator class="r-item postcard" url="/pages/common/instructions?type=1" hover-class="none">
         <view class="postcard-l">
           <view class="title">
-            <view>明信片</view>
+            <view class="title-zh">明信片</view>
             <view>Postcard</view>
           </view>
           <button class="button">立即邮寄</button>
         </view>
-        <image src="https://z1.ax1x.com/2023/11/22/pidiy3F.png" mode="aspectFit" />
+        <image class="image" src="https://z1.ax1x.com/2023/11/22/pidiy3F.png" mode="aspectFit" />
       </navigator>
       <view class="r-item meet">
         <view class="title">见面倒计时</view>
@@ -28,7 +28,11 @@
             <view>距离相见还有</view>
             <view><text style="text-decoration: underline">去设置</text>天</view>
           </view>
-          <image src="https://z1.ax1x.com/2023/11/22/pidF1bR.png" mode="scaleToFill" />
+          <image
+            class="image"
+            src="https://z1.ax1x.com/2023/11/22/pidF1bR.png"
+            mode="scaleToFill"
+          />
         </view>
       </view>
     </view>
@@ -52,13 +56,13 @@
     padding: 20rpx;
     .title {
       color: #2d7afe;
-      view:first-child {
+      .title-zh {
         font-weight: 700;
         font-size: 32rpx;
       }
     }
 
-    image {
+    .image {
       width: 160rpx;
       margin-left: auto;
       opacity: 0.6;
@@ -80,13 +84,13 @@
         justify-content: space-between;
         .title {
           color: #3cb255;
-          view:first-child {
+          .title-zh {
             font-weight: 700;
           }
         }
       }
 
-      image {
+      .image {
         width: 140rpx;
         opacity: 0.7;
       }
@@ -110,7 +114,7 @@
           color: #b59e36;
         }
       }
-      image {
+      .image {
         height: 90rpx;
         width: 120rpx;
       }
@@ -122,7 +126,6 @@
       &:last-child {
         margin-top: 16rpx;
         background-image: linear-gradient(25deg, #ffed84, #fafbbe);
-        // background-image: linear-gradient(25deg, #fabb6f, #fafbbe);
       }
     }
   }

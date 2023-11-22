@@ -111,7 +111,7 @@ const addCart = (goods, ev) => {
     </view>
     <view class="animat" :style="style">1</view>
 
-    <view class="toolbar">
+    <view class="toolbar" :style="{ bottom: safeAreaInsets.bottom + 'px' }">
       <view class="cart" id="cart">
         <uni-badge
           class="uni-badge-left-margin"
