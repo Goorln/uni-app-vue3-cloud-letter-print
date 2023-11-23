@@ -101,7 +101,7 @@ onShow(() => {
       </view>
     </view>
     <!-- 信件内容 -->
-    <view class="content" v-if="!options.showImg">
+    <view class="content" v-if="options.showWrite">
       <navigator url="/pages/common/letterEdit" open-type="navigate" hover-class="none">
         <uni-easyinput
           class="toName"

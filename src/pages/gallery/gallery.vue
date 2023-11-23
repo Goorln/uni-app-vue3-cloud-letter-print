@@ -24,7 +24,9 @@ const dialogToggle = (type) => {
   alertDialog.value.open()
 }
 // 不需要购买商品，直接跳转支付页面
-const dialogClose = () => {}
+const dialogClose = () => {
+  uni.navigateTo({ url: '/pages/order/order' })
+}
 // 需要购买商品
 const dialogConfirm = () => {
   uni.navigateTo({ url: '/pages/cart/cart' })

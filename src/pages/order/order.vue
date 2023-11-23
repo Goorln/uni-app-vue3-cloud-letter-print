@@ -1,9 +1,14 @@
 <script setup>
 import { ref } from 'vue'
-import { stepList, feeInfo } from '@/static/json/dataJson.js'
+import { stepList, feeInfo, mailingOptions } from '@/static/json/dataJson.js'
+import { useCartStore } from '@/stores/modules/cart.js'
+
+const cartStore = useCartStore()
 
 // 获取屏幕边界到安全区域距离
 const { safeAreaInsets } = uni.getSystemInfoSync()
+
+const selectedIndex = ref(0)
 </script>
 
 <template>
@@ -16,24 +21,31 @@ const { safeAreaInsets } = uni.getSystemInfoSync()
     </view>
     <!-- 商品列表 -->
     <view class="goods">
-      <view class="goods-item">
-        <image class="image" src="https://z1.ax1x.com/2023/11/17/pitLRKg.png" mode="scaleToFill" />
+      <view class="goods-item" v-for="item in cartStore.cartInfo" :key="item.id">
+        <image class="image" :src="item.picture" mode="scaleToFill" />
         <view class="title">
-          <view>挂号信回信套装</view>
-          <view>数量：X 1</view>
-          <view>单价：￥9.9</view>
-        </view>
-      </view>
-      <view class="goods-item">
-        <image class="image" src="https://z1.ax1x.com/2023/11/17/pitL1ER.jpg" mode="scaleToFill" />
-        <view class="title">
-          <view>挂号信回信套装</view>
-          <view>数量：X 1</view>
-          <view>单价：￥9.9</view>
+          <view>{{ item.name }}</view>
+          <view>数量：X {{ item.quantity }}</view>
+          <view>单价：￥{{ item.price }}</view>
         </view>
       </view>
     </view>
     <!-- 邮寄方式 -->
+    <YxyRadioItem
+      v-model:options="mailingOptions"
+      @update:options="mailingOptions = $event"
+      v-model:selected="selectedIndex"
+      @update:selected="
+        (index) => {
+          mailingOptions.items[index].current = true
+          mailingOptions.items.forEach((item) => {
+            if (item !== mailingOptions.items[index]) {
+              item.current = false
+            }
+          })
+        }
+      "
+    />
     <!-- 费用信息 -->
     <view class="feeInfo" :style="{ paddingBottom: safeAreaInsets?.bottom + 60 + 'px' }">
       <view class="title">费用信息</view>
@@ -47,7 +59,7 @@ const { safeAreaInsets } = uni.getSystemInfoSync()
       </view>
     </view>
     <view class="toolbar" :style="{ paddingBottom: safeAreaInsets?.bottom + 'px' }">
-      <button class="button">立即付款</button>
+      <button class="button">立即付款 {{ cartStore.allPrice.toFixed(2) }} 元</button>
     </view>
   </view>
 </template>

@@ -40,6 +40,7 @@ export const options = {
     { name: '9000字', price: '10.00', current: false },
   ],
   showImg: false,
+  showWrite: true,
 }
 
 // 手写拍照
@@ -73,6 +74,7 @@ export const options2 = {
     { name: '6000字', price: '69.00', current: false },
   ],
   showImg: false,
+  showWrite: true,
 }
 
 export const mailingOptions = {
@@ -84,6 +86,7 @@ export const mailingOptions = {
     { name: '顺丰', price: '30.00元', current: false },
   ],
   showImg: false,
+  showWrite: false,
 }
 // type,0 => 线上写信, 1 => 手写拍照, 2 => 钢笔代写
 export const letterPopupList = [

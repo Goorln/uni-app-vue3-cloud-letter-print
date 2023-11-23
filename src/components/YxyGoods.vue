@@ -1,10 +1,17 @@
 <script setup>
 import { ref, onMounted, getCurrentInstance, nextTick } from 'vue'
-import { onShow } from '@dcloudio/uni-app'
+import { onLoad } from '@dcloudio/uni-app'
 import { goodsList } from '@/static/json/dataJson.js'
+import { useCartStore } from '@/stores/modules/cart.js'
+const cartStore = useCartStore()
+
 // 获取屏幕边界到安全区域距离
 const { safeAreaInsets, safeArea, windowHeight } = uni.getSystemInfoSync()
 
+// 判断是否是带有tabber的页面
+const hasTabber = ref(false)
+const pages = getCurrentPages()
+hasTabber.value = pages[0].route.indexOf('shop') != -1 ? true : false
 // 设置动画效果
 // 购物车的位置
 const shoppingCarSize = ref({
@@ -42,9 +49,7 @@ const playAnimation = (left, top) => {
 }
 
 const style = ref({})
-// 购物车里的商品
-const cart = ref([])
-let productsNum = ref(0)
+
 // 商品加入购物车
 const addCart = (goods, ev) => {
   // console.log(goods, ev.target, 'goods')
@@ -55,21 +60,11 @@ const addCart = (goods, ev) => {
   // 调用动画方法
   playAnimation(left, top)
 
-  // 如果商品被添加两次则数量加一
-  const item = cart.value.find((item) => item.id === goods.id)
-  if (item) {
-    item.quantity++
-  } else {
-    cart.value.push({
-      id: goods.id,
-      name: goods.name,
-      price: goods.price,
-      quantity: 1,
-    })
-  }
-  //  商品数量
-  productsNum.value = cart.value.map((v) => v.quantity).reduce((pre, cur) => pre + cur, 0)
+  cartStore.addCart(goods)
 }
+
+// 去下单
+const buy = () => {}
 </script>
 
 <template>
@@ -111,11 +106,11 @@ const addCart = (goods, ev) => {
     </view>
     <view class="animat" :style="style">1</view>
 
-    <view class="toolbar" :style="{ bottom: safeAreaInsets.bottom + 'px' }">
+    <view class="toolbar" :style="{ bottom: hasTabber ? 0 : safeAreaInsets.bottom + 'px' }">
       <view class="cart" id="cart">
         <uni-badge
           class="uni-badge-left-margin"
-          :text="productsNum"
+          :text="cartStore.allCount"
           absolute="rightTop"
           :offset="[0, 0]"
           size="normal"
@@ -130,7 +125,7 @@ const addCart = (goods, ev) => {
         <view>客服</view>
       </view>
       <navigator url="/pages/order/order" open-type="navigate" hover-class="none">
-        <button class="buy">去下单</button>
+        <button class="buy" @tap="buy">去下单</button>
       </navigator>
     </view>
     <!-- 底部占位空盒子 -->
