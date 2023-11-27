@@ -33,7 +33,15 @@ const startMake = () => {
 
 <template>
   <view class="instructions">
-    <view v-for="(item, index) in imgArr" :key="index"><image :src="item" mode="widthFix" /></view>
+    <view class="desc">
+      <view class="title">操作说明</view>
+      <view class="text">
+        您好，欢迎使用云信印在线寄信服务，云信印是线上寄信服务，通过云信印可以简单快捷的发送您的信件到您亲爱的人手中。</view
+      >
+    </view>
+    <view class="image" v-for="(item, index) in imgArr" :key="index"
+      ><image :src="item" mode="widthFix"
+    /></view>
     <view class="toolbar" :style="{ paddingBottom: safeAreaInsets?.bottom + 10 + 'px' }">
       <button class="button" @tap="startMake">开始制作</button>
       <view class="agree">
@@ -63,6 +71,24 @@ const startMake = () => {
 </template>
 
 <style lang="scss">
+.desc {
+  padding: 20rpx;
+  .title {
+    font-size: 30rpx;
+    font-weight: 700;
+    text-align: center;
+  }
+  .text {
+    font-size: 26rpx;
+    margin-top: 20rpx;
+    text-indent: 40rpx;
+    line-height: 46rpx;
+  }
+}
+.image {
+  width: 76%;
+  margin: 0 auto;
+}
 .toolbar {
   position: fixed;
   left: 0;

@@ -9,6 +9,32 @@ const cartStore = useCartStore()
 const { safeAreaInsets } = uni.getSystemInfoSync()
 
 const selectedIndex = ref(0)
+
+const radioData = ref([
+  {
+    title: '微信支付',
+    value: 0,
+    icon: 'weixin',
+    size: '26',
+    color: '#07c160',
+  },
+  {
+    title: '余额支付',
+    value: 1,
+    icon: 'wallet-filled',
+    size: '26',
+    color: '#fab562',
+  },
+])
+const balance = ref(0)
+const currentRadioValue = ref(0)
+const onChangePaymentItem = (item) => {
+  if (balance.value === 0) {
+    uni.showToast({ icon: 'none', title: '余额不足，请先充值~' })
+    return
+  }
+  currentRadioValue.value = item.value
+}
 </script>
 
 <template>
@@ -46,6 +72,30 @@ const selectedIndex = ref(0)
         }
       "
     />
+    <!-- 支付方式 -->
+    <view class="payment">
+      <view class="title">支付方式</view>
+      <view class="payItems">
+        <view v-for="item in radioData" :key="item.value">
+          <label :for="item.title" class="label">
+            <view class="pay-item-l" @tap="onChangePaymentItem(item)">
+              <view class="circle" :class="{ checked: currentRadioValue == item.value }"></view>
+              <uni-icons :type="item.icon" :size="item.size" :color="item.color"></uni-icons>
+              <view>{{ item.title }}</view>
+              <view v-if="item.value == '1'">（￥{{ balance.toFixed(2) }}）</view>
+            </view>
+            <navigator url="/pages/" open-type="navigate" hover-class="none">
+              <view v-if="item.value == '1'" style="color: red">充值最高享9折优惠 ></view>
+            </navigator>
+          </label>
+        </view>
+      </view>
+    </view>
+    <!-- 优惠券 -->
+    <view class="coupon">
+      <view class="title">优惠券</view>
+      <view class="text">无可用优惠券</view>
+    </view>
     <!-- 费用信息 -->
     <view class="feeInfo" :style="{ paddingBottom: safeAreaInsets?.bottom + 60 + 'px' }">
       <view class="title">费用信息</view>
@@ -124,6 +174,62 @@ const selectedIndex = ref(0)
         font-size: 26rpx;
       }
     }
+  }
+}
+.payment {
+  background: #fff;
+  padding: 0 20rpx 20rpx;
+  margin-top: -30rpx;
+
+  .title {
+    font-size: 26rpx;
+    color: #7e7e7e;
+    margin-bottom: 20rpx;
+  }
+  .payItems {
+    font-size: 26rpx;
+    .label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .pay-item-l {
+        display: flex;
+        align-items: center;
+      }
+    }
+    .circle {
+      display: inline-block;
+      width: 22rpx;
+      height: 22rpx;
+      border: 2rpx solid #007aff;
+      border-radius: 50%;
+      margin-right: 8rpx;
+      &.checked {
+        background: #fff;
+        position: relative;
+      }
+      &.checked::before {
+        content: '';
+        width: 16rpx;
+        height: 16rpx;
+        background: #007aff;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}
+.coupon {
+  background: #fff;
+  padding: 20rpx;
+  font-size: 26rpx;
+  display: flex;
+  justify-content: space-between;
+  .text {
+    color: #7e7e7e;
   }
 }
 .feeInfo {

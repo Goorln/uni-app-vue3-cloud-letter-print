@@ -1,6 +1,9 @@
 <script setup>
 import { ref } from 'vue'
 import { stepList, galleryLists } from '@/static/json/dataJson.js'
+import { useCartStore } from '@/stores/modules/cart.js'
+
+const cartStore = useCartStore()
 
 // 获取屏幕边界到安全区域距离
 const { safeAreaInsets } = uni.getSystemInfoSync()
@@ -8,6 +11,7 @@ const { safeAreaInsets } = uni.getSystemInfoSync()
 let list = ref([])
 list.value = galleryLists
 
+// 模板图片选中项
 const onClickItem = (i) => {
   list.value.map((item, index) => {
     if (i === index) {
@@ -16,15 +20,26 @@ const onClickItem = (i) => {
       item.current = false
     }
   })
+  console.log(list, 'list')
 }
 const msgType = ref('')
+// 弹窗
 const alertDialog = ref(null)
+// 点击下一步
 const dialogToggle = (type) => {
-  msgType.value = type
-  alertDialog.value.open()
+  // 先判断是否有选中项
+  const currentValue = list.value.find((item) => item.current == true)
+  if (!currentValue) {
+    return uni.showToast({ icon: 'none', title: '请先选择模板~' })
+  } else {
+    msgType.value = type
+    alertDialog.value.open()
+  }
 }
 // 不需要购买商品，直接跳转支付页面
 const dialogClose = () => {
+  // 清空购物车之前保存的商品
+  cartStore.clearCartInfo()
   uni.navigateTo({ url: '/pages/order/order' })
 }
 // 需要购买商品

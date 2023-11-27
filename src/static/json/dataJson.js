@@ -1,7 +1,13 @@
-export const normalLetterInstrcImgs = ['https://z1.ax1x.com/2023/11/17/pitRteO.png']
+export const normalLetterInstrcImgs = [
+  'https://z1.ax1x.com/2023/11/23/piwkP9f.jpg',
+  'https://z1.ax1x.com/2023/11/23/piwki38.jpg',
+  'https://z1.ax1x.com/2023/11/23/piwkVBj.jpg',
+  'https://z1.ax1x.com/2023/11/23/piwkmEn.jpg',
+  'https://z1.ax1x.com/2023/11/23/piwknNq.jpg',
+]
 
 export const postcardInstrcImgs = [
-  'https://z1.ax1x.com/2023/11/17/pitRyOf.jpg',
+  'https://z1.ax1x.com/2023/11/23/piwk8u4.jpg',
   'https://z1.ax1x.com/2023/11/17/pitRyOf.jpg',
 ]
 
