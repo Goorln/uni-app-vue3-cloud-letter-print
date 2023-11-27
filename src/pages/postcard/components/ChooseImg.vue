@@ -10,6 +10,13 @@ const imageStyles = ref({
 const upload = () => {
   files.value.upload()
 }
+const goToNext = () => {
+  if (!files.value.files.length) {
+    uni.showToast({ icon: 'none', title: '请选择明信片正面图片~' })
+  } else {
+    uni.navigateTo({ url: '/pages/postcard/edit' })
+  }
+}
 </script>
 
 <template>
@@ -23,9 +30,9 @@ const upload = () => {
       :autoUpload="false"
       :imageStyles="imageStyles"
     />
-    <navigator url="/pages/postcard/edit" open-type="navigate" hover-class="none">
-      <button class="button" :style="{ bottom: safeAreaInsets?.bottom + 'px' }">下 一 步</button>
-    </navigator>
+    <button class="button" :style="{ bottom: safeAreaInsets?.bottom + 'px' }" @tap="goToNext">
+      下 一 步
+    </button>
   </view>
 </template>
 
