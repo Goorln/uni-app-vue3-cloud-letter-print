@@ -14,6 +14,7 @@ export default {
 
 <style lang="scss">
 /*每个页面公共css */
+@import '@/static/fonts/iconfont.css';
 page {
   background-color: #f7f7f7;
 }

@@ -41,69 +41,67 @@
     {
       "path": "pages/detail/detail",
       "style": {
-        "navigationBarTextStyle": "black",
         "navigationBarTitleText": "商品详情"
       }
     },
     {
       "path": "pages/common/instructions",
       "style": {
-        "navigationBarTextStyle": "black"
+        "navigationBarTitleText": "云信印"
       }
     },
     {
       "path": "pages/common/letterEdit",
       "style": {
-        "navigationBarTextStyle": "black",
         "navigationBarTitleText": "信件编辑"
       }
     },
     {
       "path": "pages/letter/letter",
       "style": {
-        "navigationBarTextStyle": "black"
+        "navigationBarTitleText": "云信印"
       }
     },
     {
       "path": "pages/postcard/index",
       "style": {
-        "navigationBarTextStyle": "black"
+        "navigationBarTitleText": "云信印"
       }
     },
     {
       "path": "pages/postcard/edit",
       "style": {
-        "navigationBarTextStyle": "black"
+        "navigationBarTitleText": "云信印"
       }
     },
     {
       "path": "pages/write/write",
       "style": {
-        "navigationBarTextStyle": "black"
+        "navigationBarTitleText": "云信印"
       }
     },
     {
       "path": "pages/gallery/gallery",
       "style": {
-        "navigationBarTextStyle": "black"
+        "navigationBarTitleText": "云信印"
       }
     },
     {
       "path": "pages/cart/cart",
       "style": {
-        "navigationBarTextStyle": "black"
+        "navigationBarTitleText": "云信印"
       }
     },
     {
       "path": "pages/order/order",
       "style": {
-        "navigationBarTextStyle": "black"
+        "navigationBarTitleText": "云信印"
       }
     }
   ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "云信印",
+    "navigationBarTitleText": "",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
@@ -138,5 +136,32 @@
         "selectedIconPath": "static/tabs/user-filling.png"
       }
     ]
+  },
+  "subPackages": [
+    {
+      "root": "pagesMember",
+      "pages": [
+        {
+          "path": "address/address",
+          "style": {
+            "navigationBarTitleText": "地址管理"
+          }
+        },
+        {
+          "path": "address-form/address-form",
+          "style": {
+            "navigationBarTitleText": "新增地址"
+          }
+        }
+      ]
+    }
+  ],
+  // 分包预下载规则
+  "preloadRule": {
+    // 用户进入我的页面时 预下载分包
+    "pages/my/my": {
+      "network": "all",
+      "packages": ["pagesMember"]
+    }
   }
 }

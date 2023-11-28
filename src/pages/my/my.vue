@@ -1,4 +1,5 @@
 <script setup>
+import { formatOrderState } from '@/static/json/dataJson.js'
 // 获取屏幕边界到安全区域距离
 const { safeAreaInsets } = uni.getSystemInfoSync()
 </script>
@@ -14,21 +15,9 @@ const { safeAreaInsets } = uni.getSystemInfoSync()
     <uni-card class="order-card" title="我的订单" extra="查看全部">
       <text class="uni-body"></text>
       <view class="items">
-        <view>
-          <uni-icons type="calendar-filled" size="50"></uni-icons>
-          <view>待付款</view>
-        </view>
-        <view>
-          <uni-icons type="calendar-filled" size="50"></uni-icons>
-          <view>待付款</view>
-        </view>
-        <view>
-          <uni-icons type="calendar-filled" size="50"></uni-icons>
-          <view>待付款</view>
-        </view>
-        <view>
-          <uni-icons type="calendar-filled" size="50"></uni-icons>
-          <view>待付款</view>
+        <view v-for="(item, index) in formatOrderState" :key="index">
+          <image class="image" :src="item.picture" mode="scaleToFill" />
+          <view>{{ item.title }}</view>
         </view>
       </view>
     </uni-card>
@@ -48,7 +37,12 @@ const { safeAreaInsets } = uni.getSystemInfoSync()
     </uni-card>
     <uni-card padding="0" spacing="0">
       <uni-list>
-        <uni-list-item title="地址管理" showArrow></uni-list-item>
+        <uni-list-item
+          title="地址管理"
+          link
+          to="/pagesMember/address/address"
+          showArrow
+        ></uni-list-item>
         <uni-list-item title="日记存稿" showArrow></uni-list-item>
         <uni-list-item title="回信查询" showArrow></uni-list-item>
         <uni-list-item title="我的优惠券" showArrow></uni-list-item>
@@ -62,9 +56,8 @@ const { safeAreaInsets } = uni.getSystemInfoSync()
 .header {
   box-sizing: border-box;
   height: 540rpx;
-  background-image: linear-gradient(to bottom, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
-  // background-image: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
-  // background-image: linear-gradient(to top, #3c4374 0%, #9090f9 48%, #6b39f3 100%);
+  background-image: linear-gradient(to bottom, #b0d9b1, #79ac78);
+  // background-image: linear-gradient(to bottom, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
   .user-info {
     text-align: center;
     color: $uni-text-color-inverse;
@@ -77,9 +70,13 @@ const { safeAreaInsets } = uni.getSystemInfoSync()
   .order-card {
     .items {
       display: flex;
-      justify-content: space-around;
-      // padding: 40rpx 0;
+      justify-content: space-between;
       padding-top: 26rpx;
+      .image {
+        width: 84rpx;
+        height: 84rpx;
+        padding-bottom: 10rpx;
+      }
     }
   }
   .invited-code {
@@ -92,7 +89,6 @@ const { safeAreaInsets } = uni.getSystemInfoSync()
       width: 48%;
       background-image: linear-gradient(to right, #ffc3a0 0%, #ffafbd 100%);
       border-radius: $uni-border-radius-base;
-      // text-align: right;
       padding-left: 32rpx;
       &:last-child {
         margin-left: 24rpx;

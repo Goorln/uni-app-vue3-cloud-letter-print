@@ -248,3 +248,22 @@ export const feeInfo = [
     price: '0',
   },
 ]
+
+export const formatOrderState = [
+  {
+    title: '待付款',
+    picture: 'https://z1.ax1x.com/2023/11/28/piBflNt.png',
+  },
+  {
+    title: '待审核',
+    picture: 'https://z1.ax1x.com/2023/11/28/piBfUBj.png',
+  },
+  {
+    title: '待寄出',
+    picture: 'https://z1.ax1x.com/2023/11/28/piBfrCV.png',
+  },
+  {
+    title: '已寄出',
+    picture: 'https://z1.ax1x.com/2023/11/28/piBf6vF.png',
+  },
+]
