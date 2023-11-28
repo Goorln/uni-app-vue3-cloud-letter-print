@@ -1,6 +1,13 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
+// 获取屏幕边界到安全区域距离
+const { safeAreaInsets } = uni.getSystemInfoSync()
+// 明信片内容
+const formData = ref({
+  cardContent: '',
+  fromName: '',
+})
 </script>
 
 <template>
@@ -10,11 +17,8 @@ import { onLoad } from '@dcloudio/uni-app'
       <view class="textarea">
         <uni-easyinput
           type="textarea"
-          v-model="value"
+          v-model="formData.cardContent"
           :styles="{
-            background: transparent,
-            borderColor: transparent,
-            border: none,
             color: '#7e7e7e',
             height: '300rpx',
             lineHeight: '30rpx',
@@ -26,7 +30,7 @@ import { onLoad } from '@dcloudio/uni-app'
         <view class="from">
           <uni-forms-item label="From：">
             <uni-easyinput
-              v-model="value"
+              v-model="formData.fromName"
               placeholder="请输入署名"
               :clearable="false"
             ></uni-easyinput>
@@ -37,6 +41,7 @@ import { onLoad } from '@dcloudio/uni-app'
         ></view>
       </view>
     </view>
+    <button class="button" :style="{ bottom: safeAreaInsets?.bottom + 'px' }">下 一 步</button>
   </view>
 </template>
 
@@ -59,6 +64,16 @@ import { onLoad } from '@dcloudio/uni-app'
       line-height: 40rpx;
       text-align: right;
     }
+  }
+  .button {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    overflow: hidden;
+
+    width: 80%;
+    height: 68rpx;
+    line-height: 68rpx;
   }
   ::v-deep .uni-easyinput__content-input {
     text-align: right;
